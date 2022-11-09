@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Go18DS (Go 1.18+ Data Structures)
+# Go18DS (Go 1.19+ Data Structures)
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/daichi-m/go18ds.svg)](https://pkg.go.dev/github.com/daichi-m/go18ds)
 [![Go Build](https://github.com/daichi-m/go18ds/actions/workflows/go.yml/badge.svg)](https://github.com/daichi-m/go18ds/actions/workflows/go.yml)
