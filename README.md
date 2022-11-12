@@ -1,18 +1,18 @@
 <!-- omit in toc -->
-# Go18DS (Go 1.19+ Data Structures)
+# Gods Generic (Go 1.19+ Data Structures)
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/daichi-m/go18ds.svg)](https://pkg.go.dev/github.com/daichi-m/go18ds)
-[![Go Build](https://github.com/daichi-m/go18ds/actions/workflows/go.yml/badge.svg)](https://github.com/daichi-m/go18ds/actions/workflows/go.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/daichi-m/go18ds)](https://goreportcard.com/report/github.com/daichi-m/go18ds)
-[![codecov](https://codecov.io/gh/daichi-m/go18ds/branch/main/graph/badge.svg?token=5eYXdBcCzD)](https://codecov.io/gh/daichi-m/go18ds)
-[![License](https://img.shields.io/badge/license-BSD--3--Clause-green)](https://github.com/daichi-m/go18ds/blob/main/LICENSE)
+[![Go Reference](https://pkg.go.dev/badge/github.com/rahul1534/gods-generic.svg)](https://pkg.go.dev/github.com/rahul1534/gods-generic)
+[![Go Build](https://github.com/rahul1534/gods-generic/actions/workflows/go.yml/badge.svg)](https://github.com/rahul1534/gods-generic/actions/workflows/go.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rahul1534/gods-generic)](https://goreportcard.com/report/github.com/rahul1534/gods-generic)
+[![codecov](https://codecov.io/gh/rahul1534/gods-generic/branch/main/graph/badge.svg?token=5eYXdBcCzD)](https://codecov.io/gh/rahul1534/gods-generic)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-green)](https://github.com/rahul1534/gods-generic/blob/main/LICENSE)
 
 
 
 Implementation of various data structures and algorithms in Go.
 
-This is based on the [GoDS](https://github.com/emirpasic/gods) library developed by Emir Pasic.
-Since the target is for Go 1.18+, it is inherently generic-aware.
+This is based on the [GoDS](https://github.com/emirpasic/gods) library developed by Emir Pasic and [Go18DS](https://github.com/daichi-m/go18ds) developed by Sohom Majumdar.
+Since the target is for Go 1.19+, it is inherently generic-aware.
 
 <!-- omit in toc -->
 ## Data Structures
@@ -139,8 +139,8 @@ Implements [List](#lists), [IteratorWithIndex](#iteratorwithindex), [EnumerableW
 package main
 
 import (
-    "github.com/daichi-m/go18ds/lists/arraylist"
-    "github.com/daichi-m/go18ds/utils"
+    "github.com/rahul1534/gods-generic/lists/arraylist"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // ArrayListExample to demonstrate basic usage of ArrayList
@@ -175,8 +175,8 @@ Implements [List](#lists), [IteratorWithIndex](#iteratorwithindex), [EnumerableW
 package main
 
 import (
-    sll "github.com/daichi-m/go18ds/lists/singlylinkedlist"
-    "github.com/daichi-m/go18ds/utils"
+    sll "github.com/rahul1534/gods-generic/lists/singlylinkedlist"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // SinglyLinkedListExample to demonstrate basic usage of SinglyLinkedList
@@ -211,8 +211,8 @@ Implements [List](#lists), [IteratorWithIndex](#iteratorwithindex), [EnumerableW
 package main
 
 import (
-    dll "github.com/daichi-m/go18ds/lists/doublylinkedlist"
-    "github.com/daichi-m/go18ds/utils"
+    dll "github.com/rahul1534/gods-generic/lists/doublylinkedlist"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // DoublyLinkedListExample to demonstrate basic usage of DoublyLinkedList
@@ -264,7 +264,7 @@ A [set](#sets) backed by a hash table (actually a Go's map). It makes no guarant
 Implements [Set](#sets), [JSONSerializer](#jsonserializer) and [JSONDeserializer](#jsondeserializer) interfaces.
 
 ```go
-import "github.com/daichi-m/go18ds/sets/hashset"
+import "github.com/rahul1534/gods-generic/sets/hashset"
 
 // HashSetExample to demonstrate basic usage of HashSet
 func main() {
@@ -292,7 +292,7 @@ Implements [Set](#sets), [IteratorWithIndex](#iteratorwithindex), [EnumerableWit
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/sets/treeset"
+import "github.com/rahul1534/gods-generic/sets/treeset"
 
 // TreeSetExample to demonstrate basic usage of TreeSet
 func main() {
@@ -320,7 +320,7 @@ Implements [Set](#sets), [IteratorWithIndex](#iteratorwithindex), [EnumerableWit
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/sets/linkedhashset"
+import "github.com/rahul1534/gods-generic/sets/linkedhashset"
 
 // LinkedHashSetExample to demonstrate basic usage of LinkedHashSet
 func main() {
@@ -368,7 +368,7 @@ Implements [Stack](#stacks), [IteratorWithIndex](#iteratorwithindex), [JSONSeria
 ```go
 package main
 
-import lls "github.com/daichi-m/go18ds/stacks/linkedliststack"
+import lls "github.com/rahul1534/gods-generic/stacks/linkedliststack"
 
 // LinkedListStackExample to demonstrate basic usage of LinkedListStack
 func main() {
@@ -396,7 +396,7 @@ Implements [Stack](#stacks), [IteratorWithIndex](#iteratorwithindex), [JSONSeria
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/stacks/arraystack"
+import "github.com/rahul1534/gods-generic/stacks/arraystack"
 
 // ArrayStackExample to demonstrate basic usage of ArrayStack
 func main() {
@@ -457,7 +457,7 @@ Implements [Map](#maps), [JSONSerializer](#jsonserializer) and [JSONDeserializer
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/maps/hashmap"
+import "github.com/rahul1534/gods-generic/maps/hashmap"
 
 // HashMapExample to demonstrate basic usage of HashMap
 func main() {
@@ -516,7 +516,7 @@ Implements [Map](#maps), [IteratorWithKey](#iteratorwithkey), [EnumerableWithKey
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/maps/linkedhashmap"
+import "github.com/rahul1534/gods-generic/maps/linkedhashmap"
 
 // LinkedHashMapExample to demonstrate basic usage of LinkedHashMapExample
 func main() {
@@ -544,7 +544,7 @@ Implements [BidiMap](#maps), [JSONSerializer](#jsonserializer) and [JSONDeserial
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/maps/hashbidimap"
+import "github.com/rahul1534/gods-generic/maps/hashbidimap"
 
 // HashBidiMapExample to demonstrate basic usage of HashMap
 func main() {
@@ -575,8 +575,8 @@ Implements [BidiMap](#maps), [IteratorWithKey](#iteratorwithkey), [EnumerableWit
 package main
 
 import (
-    "github.com/daichi-m/go18ds/maps/treebidimap"
-    "github.com/daichi-m/go18ds/utils"
+    "github.com/rahul1534/gods-generic/maps/treebidimap"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // TreeBidiMapExample to demonstrate basic usage of TreeBidiMap
@@ -630,7 +630,7 @@ package main
 import (
     "fmt"
 
-    rbt "github.com/daichi-m/go18ds/trees/redblacktree"
+    rbt "github.com/rahul1534/gods-generic/trees/redblacktree"
 )
 
 // RedBlackTreeExample to demonstrate basic usage of RedBlackTree
@@ -692,7 +692,7 @@ package main
 import (
     "fmt"
 
-    avl "github.com/daichi-m/go18ds/trees/avltree"
+    avl "github.com/rahul1534/gods-generic/trees/avltree"
 )
 
 // AVLTreeExample to demonstrate basic usage of AVLTree
@@ -758,7 +758,7 @@ Implements [Tree](#trees), [ReverseIteratorWithKey](#reverseiteratorwithkey), [J
 import (
     "fmt"
 
-    "github.com/daichi-m/go18ds/trees/btree"
+    "github.com/rahul1534/gods-generic/trees/btree"
 )
 
 // BTreeExample to demonstrate basic usage of BTree
@@ -831,8 +831,8 @@ Implements [Tree](#trees), [ReverseIteratorWithIndex](#reverseiteratorwithindex)
 package main
 
 import (
-    "github.com/daichi-m/go18ds/trees/binaryheap"
-    "github.com/daichi-m/go18ds/utils"
+    "github.com/rahul1534/gods-generic/trees/binaryheap"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // BinaryHeapExample to demonstrate basic usage of BinaryHeap
@@ -908,7 +908,7 @@ package main
 import (
     "fmt"
 
-    "github.com/daichi-m/go18ds/sets/treeset"
+    "github.com/rahul1534/gods-generic/sets/treeset"
 )
 
 // User model (id and name)
@@ -1109,7 +1109,7 @@ package main
 import (
     "fmt"
 
-    "github.com/daichi-m/go18ds/sets/treeset"
+    "github.com/rahul1534/gods-generic/sets/treeset"
 )
 
 func printSet(txt string, set *treeset.Set[int]) {
@@ -1222,7 +1222,7 @@ package main
 import (
     "fmt"
 
-    "github.com/daichi-m/go18ds/maps/treemap"
+    "github.com/rahul1534/gods-generic/maps/treemap"
 )
 
 func printMap(txt string, m *treemap.Map[string, int]) {
@@ -1295,7 +1295,7 @@ package main
 
 import (
     "fmt"
-    "github.com/daichi-m/go18ds/maps/hashmap"
+    "github.com/rahul1534/gods-generic/maps/hashmap"
 )
 
 func main() {
@@ -1319,7 +1319,7 @@ package main
 
 import (
     "fmt"
-    "github.com/daichi-m/go18ds/lists/arraylist"
+    "github.com/rahul1534/gods-generic/lists/arraylist"
 )
 
 func main() {
@@ -1345,7 +1345,7 @@ package main
 
 import (
     "fmt"
-    "github.com/daichi-m/go18ds/maps/hashmap"
+    "github.com/rahul1534/gods-generic/maps/hashmap"
 )
 
 func main() {
@@ -1367,7 +1367,7 @@ package main
 
 import (
     "fmt"
-    "github.com/daichi-m/go18ds/lists/arraylist"
+    "github.com/rahul1534/gods-generic/lists/arraylist"
 )
 
 func main() {
@@ -1393,7 +1393,7 @@ Internally these all use the _utils.Sort()_ method:
 ```go
 package main
 
-import "github.com/daichi-m/go18ds/utils"
+import "github.com/rahul1534/gods-generic/utils"
 
 // SortExample to demonstrate basic usage of basic sort
 func main() {
@@ -1479,7 +1479,7 @@ This takes a while, so test within sub-packages:
 
 `go test -run=NO_TEST -bench . -benchmem  -benchtime 1s ./...`
 
-[Click here](https://github.com/daichi-m/go18ds/blob/main/benchmark.txt) to see the benchmark results.
+[Click here](https://github.com/rahul1534/gods-generic/blob/main/benchmark.txt) to see the benchmark results.
 
 ### Contributing
 
