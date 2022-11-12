@@ -8,8 +8,8 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/rahul1534/go18ds/containers"
-	"github.com/rahul1534/go18ds/utils"
+	"github.com/rahul1534/gods-generic/containers"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 func assertSerializationImplementation() {

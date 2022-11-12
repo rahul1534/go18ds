@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/rahul1534/go18ds/utils"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 func sameElements[K comparable](a []K, b []K) bool {

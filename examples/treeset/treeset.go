@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/rahul1534/go18ds/sets/treeset"
+import "github.com/rahul1534/gods-generic/sets/treeset"
 
 // TreeSetExample to demonstrate basic usage of TreeSet
 func main() {

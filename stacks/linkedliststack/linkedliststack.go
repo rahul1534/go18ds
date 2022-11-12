@@ -13,8 +13,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rahul1534/go18ds/lists/singlylinkedlist"
-	"github.com/rahul1534/go18ds/stacks"
+	"github.com/rahul1534/gods-generic/lists/singlylinkedlist"
+	"github.com/rahul1534/gods-generic/stacks"
 )
 
 func assertStackImplementation() {

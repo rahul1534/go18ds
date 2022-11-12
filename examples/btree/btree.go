@@ -7,7 +7,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/rahul1534/go18ds/trees/btree"
+	"github.com/rahul1534/gods-generic/trees/btree"
 )
 
 // BTreeExample to demonstrate basic usage of BTree

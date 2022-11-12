@@ -13,9 +13,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rahul1534/go18ds/sets"
-	rbt "github.com/rahul1534/go18ds/trees/redblacktree"
-	"github.com/rahul1534/go18ds/utils"
+	"github.com/rahul1534/gods-generic/sets"
+	rbt "github.com/rahul1534/gods-generic/trees/redblacktree"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 func assertSetImplementation() {

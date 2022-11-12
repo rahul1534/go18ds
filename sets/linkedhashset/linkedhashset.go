@@ -17,8 +17,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rahul1534/go18ds/lists/doublylinkedlist"
-	"github.com/rahul1534/go18ds/sets"
+	"github.com/rahul1534/gods-generic/lists/doublylinkedlist"
+	"github.com/rahul1534/gods-generic/sets"
 )
 
 func assertSetImplementation() {

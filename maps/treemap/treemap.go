@@ -15,9 +15,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rahul1534/go18ds/maps"
-	rbt "github.com/rahul1534/go18ds/trees/redblacktree"
-	"github.com/rahul1534/go18ds/utils"
+	"github.com/rahul1534/gods-generic/maps"
+	rbt "github.com/rahul1534/gods-generic/trees/redblacktree"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 func assertMapImplementation() {

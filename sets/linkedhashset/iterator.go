@@ -5,8 +5,8 @@
 package linkedhashset
 
 import (
-	"github.com/rahul1534/go18ds/containers"
-	"github.com/rahul1534/go18ds/lists/doublylinkedlist"
+	"github.com/rahul1534/gods-generic/containers"
+	"github.com/rahul1534/gods-generic/lists/doublylinkedlist"
 )
 
 func assertIteratorImplementation() {

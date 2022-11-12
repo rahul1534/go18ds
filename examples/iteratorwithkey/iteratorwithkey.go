@@ -7,7 +7,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/rahul1534/go18ds/maps/treemap"
+	"github.com/rahul1534/gods-generic/maps/treemap"
 )
 
 // IteratorWithKeyExample to demonstrate basic usage of IteratorWithKey

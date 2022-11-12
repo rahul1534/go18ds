@@ -15,9 +15,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rahul1534/go18ds/lists/arraylist"
-	"github.com/rahul1534/go18ds/trees"
-	"github.com/rahul1534/go18ds/utils"
+	"github.com/rahul1534/gods-generic/lists/arraylist"
+	"github.com/rahul1534/gods-generic/trees"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 func assertTreeImplementation() {
