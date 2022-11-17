@@ -485,7 +485,7 @@ Implements [Map](#maps), [IteratorWithKey](#iteratorwithkey), [EnumerableWithKey
 ```go
 package main
 
-import "github.com/emirpasic/gods/maps/treemap"
+import "github.com/rahul1534/gods-generic/maps/treemap"
 
 func main() {
     m := treemap.NewWithIntComparator() // empty (keys are of type int)
@@ -674,7 +674,7 @@ func main() {
 }
 ```
 
-Extending the red-black tree's functionality  has been demonstrated in the following [example](https://github.com/emirpasic/gods/blob/master/examples/redblacktreeextended/redblacktreeextended.go).
+Extending the red-black tree's functionality  has been demonstrated in the following [example](https://github.com/rahul1534/gods-generic/blob/main/examples/redblacktreeextended/redblacktreeextended.go).
 
 #### AVLTree
 
@@ -1422,8 +1422,8 @@ Usage:
 package main
 
 import (
-    "github.com/emirpasic/gods/lists/arraylist"
-    "github.com/emirpasic/gods/utils"
+    "github.com/rahul1534/gods-generic/lists/arraylist"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 func main() {
@@ -1502,4 +1502,4 @@ go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... &
 
 ### License
 
-This library is distributed under the BSD-style license found in the [LICENSE](https://github.com/emirpasic/gods/blob/master/LICENSE) file.
+This library is distributed under the BSD-style license found in the [LICENSE](https://github.com/rahul1534/gods-generic/blob/main/LICENSE) file.
