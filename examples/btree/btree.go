@@ -7,12 +7,13 @@ package main
 import (
 	"fmt"
 
-	"github.com/rahul1534/gods-generic/trees/btree"
+	"github.com/rahul1534/gods-generic/flatten"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 // BTreeExample to demonstrate basic usage of BTree
 func main() {
-	tree := btree.NewWithIntComparator[string](3) // empty (keys are of type int)
+	tree := flatten.NewBtree[int, string](3, utils.NumberComparator[int]) // empty (keys are of type int)
 
 	tree.Put(1, "x") // 1->x
 	tree.Put(2, "b") // 1->x, 2->b (in order)

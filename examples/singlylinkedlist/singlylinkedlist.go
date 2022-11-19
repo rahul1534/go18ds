@@ -5,13 +5,13 @@
 package main
 
 import (
-	sll "github.com/rahul1534/gods-generic/lists/singlylinkedlist"
+	"github.com/rahul1534/gods-generic/flatten"
 	"github.com/rahul1534/gods-generic/utils"
 )
 
 // SinglyLinkedListExample to demonstrate basic usage of SinglyLinkedList
 func main() {
-	list := sll.New[string]()
+	list := flatten.NewSinglyLinkedList[string]()
 	list.Add("a")                         // ["a"]
 	list.Append("b")                      // ["a","b"] (same as Add())
 	list.Prepend("c")                     // ["c","a","b"]

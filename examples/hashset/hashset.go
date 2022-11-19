@@ -4,11 +4,11 @@
 
 package main
 
-import "github.com/rahul1534/gods-generic/sets/hashset"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // HashSetExample to demonstrate basic usage of HashSet
 func main() {
-	set := hashset.New[int]() // empty (keys are of type int)
+	set := flatten.NewHashSet[int]() // empty (keys are of type int)
 	set.Add(1)                // 1
 	set.Add(2, 2, 3, 4, 5)    // 3, 1, 2, 4, 5 (random order, duplicates ignored)
 	set.Remove(4)             // 5, 3, 2, 1 (random order)
