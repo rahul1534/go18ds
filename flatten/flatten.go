@@ -9,6 +9,9 @@ import (
 	"github.com/rahul1534/gods-generic/maps/linkedhashmap"
 	"github.com/rahul1534/gods-generic/maps/treebidimap"
 	"github.com/rahul1534/gods-generic/maps/treemap"
+	"github.com/rahul1534/gods-generic/sets/hashset"
+	"github.com/rahul1534/gods-generic/sets/linkedhashset"
+	"github.com/rahul1534/gods-generic/sets/treeset"
 	"github.com/rahul1534/gods-generic/utils"
 )
 
@@ -49,3 +52,15 @@ func NewTreeBidiMap[K comparable, V comparable](keyComparator utils.Comparator[K
 }
 
 // #endregion
+
+func NewHashSet[T comparable]() *hashset.Set[T] {
+	return hashset.New[T]()
+}
+
+func NewLinkedHashSet[T comparable]() *linkedhashset.Set[T] {
+	return linkedhashset.New[T]()
+}
+
+func NewTreeSet[T comparable](comparator utils.Comparator[T]) *treeset.Set[T] {
+	return treeset.NewWith(comparator)
+}
