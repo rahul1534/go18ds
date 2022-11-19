@@ -4,9 +4,7 @@
 
 package main
 
-import (
-	"github.com/rahul1534/gods-generic/flatten"
-)
+import "github.com/rahul1534/gods-generic/flatten"
 
 // HashMapExample to demonstrate basic usage of HashMap
 func main() {
