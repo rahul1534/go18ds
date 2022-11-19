@@ -139,13 +139,13 @@ Implements [List](#lists), [IteratorWithIndex](#iteratorwithindex), [EnumerableW
 package main
 
 import (
-    "github.com/rahul1534/gods-generic/lists/arraylist"
+    "github.com/rahul1534/gods-generic/flatten"
     "github.com/rahul1534/gods-generic/utils"
 )
 
 // ArrayListExample to demonstrate basic usage of ArrayList
 func main() {
-    list := arraylist.New[string]()
+    list := flatten.NewArrayList[string]()
     list.Add("a")                         // ["a"]
     list.Add("c", "b")                    // ["a","c","b"]
     list.Sort(utils.StringComparator)     // ["a","b","c"]
@@ -162,7 +162,7 @@ func main() {
     _ = list.Size()                       // 0
     list.Add("a")                         // ["a"]
     list.Clear()                          // []
-}
+  }
 ```
 
 #### SinglyLinkedList
@@ -175,13 +175,13 @@ Implements [List](#lists), [IteratorWithIndex](#iteratorwithindex), [EnumerableW
 package main
 
 import (
-    sll "github.com/rahul1534/gods-generic/lists/singlylinkedlist"
+    "github.com/rahul1534/gods-generic/flatten"
     "github.com/rahul1534/gods-generic/utils"
 )
 
 // SinglyLinkedListExample to demonstrate basic usage of SinglyLinkedList
 func main() {
-    list := sll.New[string]()
+    list := flatten.NewSinglyLinkedList[string]()
     list.Add("a")                         // ["a"]
     list.Append("b")                      // ["a","b"] (same as Add())
     list.Prepend("c")                     // ["c","a","b"]
@@ -211,13 +211,13 @@ Implements [List](#lists), [IteratorWithIndex](#iteratorwithindex), [EnumerableW
 package main
 
 import (
-    dll "github.com/rahul1534/gods-generic/lists/doublylinkedlist"
+    "github.com/rahul1534/gods-generic/flatten"
     "github.com/rahul1534/gods-generic/utils"
 )
 
 // DoublyLinkedListExample to demonstrate basic usage of DoublyLinkedList
 func main() {
-    list := dll.New[string]()
+    list := flatten.NewDoublyLinkedList[string]()
     list.Add("a")                         // ["a"]
     list.Append("b")                      // ["a","b"] (same as Add())
     list.Prepend("c")                     // ["c","a","b"]
@@ -264,11 +264,13 @@ A [set](#sets) backed by a hash table (actually a Go's map). It makes no guarant
 Implements [Set](#sets), [JSONSerializer](#jsonserializer) and [JSONDeserializer](#jsondeserializer) interfaces.
 
 ```go
-import "github.com/rahul1534/gods-generic/sets/hashset"
+package main
+
+import "github.com/rahul1534/gods-generic/flatten"
 
 // HashSetExample to demonstrate basic usage of HashSet
 func main() {
-    set := hashset.New[int]() // empty (keys are of type int)
+    set := flatten.NewHashSet[int]() // empty (keys are of type int)
     set.Add(1)                // 1
     set.Add(2, 2, 3, 4, 5)    // 3, 1, 2, 4, 5 (random order, duplicates ignored)
     set.Remove(4)             // 5, 3, 2, 1 (random order)
@@ -292,22 +294,25 @@ Implements [Set](#sets), [IteratorWithIndex](#iteratorwithindex), [EnumerableWit
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/sets/treeset"
+import (
+	"github.com/rahul1534/gods-generic/flatten"
+	"github.com/rahul1534/gods-generic/utils"
+)
 
 // TreeSetExample to demonstrate basic usage of TreeSet
 func main() {
-    set := treeset.NewWithIntComparator() // empty
-    set.Add(1)                            // 1
-    set.Add(2, 2, 3, 4, 5)                // 1, 2, 3, 4, 5 (in order, duplicates ignored)
-    set.Remove(4)                         // 1, 2, 3, 5 (in order)
-    set.Remove(2, 3)                      // 1, 5 (in order)
-    set.Contains(1)                       // true
-    set.Contains(1, 5)                    // true
-    set.Contains(1, 6)                    // false
-    _ = set.Values()                      // []int{1,5} (in order)
-    set.Clear()                           // empty
-    set.Empty()                           // true
-    set.Size()                            // 0
+    set := flatten.NewTreeSet(utils.NumberComparator[int]) // empty
+    set.Add(1)                                             // 1
+    set.Add(2, 2, 3, 4, 5)                                 // 1, 2, 3, 4, 5 (in order, duplicates ignored)
+    set.Remove(4)                                          // 1, 2, 3, 5 (in order)
+    set.Remove(2, 3)                                       // 1, 5 (in order)
+    set.Contains(1)                                        // true
+    set.Contains(1, 5)                                     // true
+    set.Contains(1, 6)                                     // false
+    _ = set.Values()                                       // []int{1,5} (in order)
+    set.Clear()                                            // empty
+    set.Empty()                                            // true
+    set.Size()                                             // 0
 }
 ```
 
@@ -320,22 +325,22 @@ Implements [Set](#sets), [IteratorWithIndex](#iteratorwithindex), [EnumerableWit
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/sets/linkedhashset"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // LinkedHashSetExample to demonstrate basic usage of LinkedHashSet
 func main() {
-    set := linkedhashset.New[int]() // empty
-    set.Add(5)                      // 5
-    set.Add(4, 4, 3, 2, 1)          // 5, 4, 3, 2, 1 (in insertion-order, duplicates ignored)
-    set.Remove(4)                   // 5, 3, 2, 1 (in insertion-order)
-    set.Remove(2, 3)                // 5, 1 (in insertion-order)
-    set.Contains(1)                 // true
-    set.Contains(1, 5)              // true
-    set.Contains(1, 6)              // false
-    _ = set.Values()                // []int{5, 1} (in insertion-order)
-    set.Clear()                     // empty
-    set.Empty()                     // true
-    set.Size()                      // 0
+    set := flatten.NewLinkedHashSet[int]() // empty
+    set.Add(5)                             // 5
+    set.Add(4, 4, 3, 2, 1)                 // 5, 4, 3, 2, 1 (in insertion-order, duplicates ignored)
+    set.Remove(4)                          // 5, 3, 2, 1 (in insertion-order)
+    set.Remove(2, 3)                       // 5, 1 (in insertion-order)
+    set.Contains(1)                        // true
+    set.Contains(1, 5)                     // true
+    set.Contains(1, 6)                     // false
+    _ = set.Values()                       // []int{5, 1} (in insertion-order)
+    set.Clear()                            // empty
+    set.Empty()                            // true
+    set.Size()                             // 0
 }
 ```
 
@@ -368,11 +373,11 @@ Implements [Stack](#stacks), [IteratorWithIndex](#iteratorwithindex), [JSONSeria
 ```go
 package main
 
-import lls "github.com/rahul1534/gods-generic/stacks/linkedliststack"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // LinkedListStackExample to demonstrate basic usage of LinkedListStack
 func main() {
-    stack := lls.New[int]() // empty
+    stack := flatten.NewLinkedListStack[int]() // empty
     stack.Push(1)           // 1
     stack.Push(2)           // 1, 2
     stack.Values()          // 2, 1 (LIFO order)
@@ -396,22 +401,22 @@ Implements [Stack](#stacks), [IteratorWithIndex](#iteratorwithindex), [JSONSeria
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/stacks/arraystack"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // ArrayStackExample to demonstrate basic usage of ArrayStack
 func main() {
-    stack := arraystack.New[int]() // empty
-    stack.Push(1)             // 1
-    stack.Push(2)             // 1, 2
-    stack.Values()            // 2, 1 (LIFO order)
-    _, _ = stack.Peek()       // 2,true
-    _, _ = stack.Pop()        // 2, true
-    _, _ = stack.Pop()        // 1, true
-    _, _ = stack.Pop()        // nil, false (nothing to pop)
-    stack.Push(1)             // 1
-    stack.Clear()             // empty
-    stack.Empty()             // true
-    stack.Size()              // 0
+    stack := flatten.NewArrayStack[int]() // empty
+    stack.Push(1)                         // 1
+    stack.Push(2)                         // 1, 2
+    stack.Values()                        // 2, 1 (LIFO order)
+    _, _ = stack.Peek()                   // 2,true
+    _, _ = stack.Pop()                    // 2, true
+    _, _ = stack.Pop()                    // 1, true
+    _, _ = stack.Pop()                    // nil, false (nothing to pop)
+    stack.Push(1)                         // 1
+    stack.Clear()                         // empty
+    stack.Empty()                         // true
+    stack.Size()                          // 0
 }
 ```
 
@@ -457,22 +462,22 @@ Implements [Map](#maps), [JSONSerializer](#jsonserializer) and [JSONDeserializer
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/maps/hashmap"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // HashMapExample to demonstrate basic usage of HashMap
 func main() {
-    m := hashmap.New[int, string]() // empty
-    m.Put(1, "x")                   // 1->x
-    m.Put(2, "b")                   // 2->b, 1->x  (random order)
-    m.Put(1, "a")                   // 2->b, 1->a (random order)
-    _, _ = m.Get(2)                 // b, true
-    _, _ = m.Get(3)                 // nil, false
-    _ = m.Values()                  // []interface {}{"b", "a"} (random order)
-    _ = m.Keys()                    // []interface {}{1, 2} (random order)
-    m.Remove(1)                     // 2->b
-    m.Clear()                       // empty
-    m.Empty()                       // true
-    m.Size()                        // 0
+    m := flatten.NewHashMap[int, string]() // empty
+    m.Put(1, "x")                          // 1->x
+    m.Put(2, "b")                          // 2->b, 1->x  (random order)
+    m.Put(1, "a")                          // 2->b, 1->a (random order)
+    _, _ = m.Get(2)                        // b, true
+    _, _ = m.Get(3)                        // nil, false
+    _ = m.Values()                         // []interface {}{"b", "a"} (random order)
+    _ = m.Keys()                           // []interface {}{1, 2} (random order)
+    m.Remove(1)                            // 2->b
+    m.Clear()                              // empty
+    m.Empty()                              // true
+    m.Size()                               // 0
 }
 ```
 
@@ -485,25 +490,25 @@ Implements [Map](#maps), [IteratorWithKey](#iteratorwithkey), [EnumerableWithKey
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/maps/treemap"
+import (
+	"github.com/rahul1534/gods-generic/flatten"
+	"github.com/rahul1534/gods-generic/utils"
+)
 
+// TreeMapExample to demonstrate basic usage of TreeMap
 func main() {
-    m := treemap.NewWithIntComparator() // empty (keys are of type int)
-    m.Put(1, "x")                       // 1->x
-    m.Put(2, "b")                       // 1->x, 2->b (in order)
-    m.Put(1, "a")                       // 1->a, 2->b (in order)
-    _, _ = m.Get(2)                     // b, true
-    _, _ = m.Get(3)                     // nil, false
-    _ = m.Values()                      // []interface {}{"a", "b"} (in order)
-    _ = m.Keys()                        // []interface {}{1, 2} (in order)
-    m.Remove(1)                         // 2->b
-    m.Clear()                           // empty
-    m.Empty()                           // true
-    m.Size()                            // 0
-
-    // Other:
-    m.Min() // Returns the minimum key and its value from map.
-    m.Max() // Returns the maximum key and its value from map.
+    m := flatten.NewTreeMap[int, string](utils.NumberComparator[int]) // empty (keys are of type int)
+    m.Put(1, "x")                                                     // 1->x
+    m.Put(2, "b")                                                     // 1->x, 2->b (in order)
+    m.Put(1, "a")                                                     // 1->a, 2->b (in order)
+    _, _ = m.Get(2)                                                   // b, true
+    _, _ = m.Get(3)                                                   // nil, false
+    _ = m.Values()                                                    // []interface {}{"a", "b"} (in order)
+    _ = m.Keys()                                                      // []interface {}{1, 2} (in order)
+    m.Remove(1)                                                       // 2->b
+    m.Clear()                                                         // empty
+    m.Empty()                                                         // true
+    m.Size()                                                          // 0
 }
 ```
 
@@ -516,22 +521,22 @@ Implements [Map](#maps), [IteratorWithKey](#iteratorwithkey), [EnumerableWithKey
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/maps/linkedhashmap"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // LinkedHashMapExample to demonstrate basic usage of LinkedHashMapExample
 func main() {
-    m := linkedhashmap.New[int, string]() // empty (keys are of type int)
-    m.Put(2, "b")                         // 2->b
-    m.Put(1, "x")                         // 2->b, 1->x (insertion-order)
-    m.Put(1, "a")                         // 2->b, 1->a (insertion-order)
-    _, _ = m.Get(2)                       // b, true
-    _, _ = m.Get(3)                       // nil, false
-    _ = m.Values()                        // []interface {}{"b", "a"} (insertion-order)
-    _ = m.Keys()                          // []interface {}{2, 1} (insertion-order)
-    m.Remove(1)                           // 2->b
-    m.Clear()                             // empty
-    m.Empty()                             // true
-    m.Size()                              // 0
+    m := flatten.NewLinkedHashMap[int, string]() // empty (keys are of type int)
+    m.Put(2, "b")                                // 2->b
+    m.Put(1, "x")                                // 2->b, 1->x (insertion-order)
+    m.Put(1, "a")                                // 2->b, 1->a (insertion-order)
+    _, _ = m.Get(2)                              // b, true
+    _, _ = m.Get(3)                              // nil, false
+    _ = m.Values()                               // []interface {}{"b", "a"} (insertion-order)
+    _ = m.Keys()                                 // []interface {}{2, 1} (insertion-order)
+    m.Remove(1)                                  // 2->b
+    m.Clear()                                    // empty
+    m.Empty()                                    // true
+    m.Size()                                     // 0
 }
 ```
 
@@ -544,24 +549,24 @@ Implements [BidiMap](#maps), [JSONSerializer](#jsonserializer) and [JSONDeserial
 ```go
 package main
 
-import "github.com/rahul1534/gods-generic/maps/hashbidimap"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // HashBidiMapExample to demonstrate basic usage of HashMap
 func main() {
-    m := hashbidimap.New[int, string]() // empty
-    m.Put(1, "x")                       // 1->x
-    m.Put(3, "b")                       // 1->x, 3->b (random order)
-    m.Put(1, "a")                       // 1->a, 3->b (random order)
-    m.Put(2, "b")                       // 1->a, 2->b (random order)
-    _, _ = m.GetKey("a")                // 1, true
-    _, _ = m.Get(2)                     // b, true
-    _, _ = m.Get(3)                     // nil, false
-    _ = m.Values()                      // []interface {}{"a", "b"} (random order)
-    _ = m.Keys()                        // []interface {}{1, 2} (random order)
-    m.Remove(1)                         // 2->b
-    m.Clear()                           // empty
-    m.Empty()                           // true
-    m.Size()                            // 0
+    m := flatten.NewHashBidiMap[int, string]() // empty
+    m.Put(1, "x")                              // 1->x
+    m.Put(3, "b")                              // 1->x, 3->b (random order)
+    m.Put(1, "a")                              // 1->a, 3->b (random order)
+    m.Put(2, "b")                              // 1->a, 2->b (random order)
+    _, _ = m.GetKey("a")                       // 1, true
+    _, _ = m.Get(2)                            // b, true
+    _, _ = m.Get(3)                            // nil, false
+    _ = m.Values()                             // []interface {}{"a", "b"} (random order)
+    _ = m.Keys()                               // []interface {}{1, 2} (random order)
+    m.Remove(1)                                // 2->b
+    m.Clear()                                  // empty
+    m.Empty()                                  // true
+    m.Size()                                   // 0
 }
 ```
 
@@ -575,13 +580,13 @@ Implements [BidiMap](#maps), [IteratorWithKey](#iteratorwithkey), [EnumerableWit
 package main
 
 import (
-    "github.com/rahul1534/gods-generic/maps/treebidimap"
-    "github.com/rahul1534/gods-generic/utils"
+	"github.com/rahul1534/gods-generic/flatten"
+	"github.com/rahul1534/gods-generic/utils"
 )
 
 // TreeBidiMapExample to demonstrate basic usage of TreeBidiMap
 func main() {
-    m := treebidimap.NewWith(utils.NumberComparator[int], utils.StringComparator)
+    m := flatten.NewTreeBidiMap(utils.NumberComparator[int], utils.StringComparator)
     m.Put(1, "x")        // 1->x
     m.Put(3, "b")        // 1->x, 3->b (ordered)
     m.Put(1, "a")        // 1->a, 3->b (ordered)
@@ -595,7 +600,7 @@ func main() {
     m.Clear()            // empty
     m.Empty()            // true
     m.Size()             // 0
-}
+  }
 ```
 
 ### Trees
@@ -630,12 +635,13 @@ package main
 import (
     "fmt"
 
-    rbt "github.com/rahul1534/gods-generic/trees/redblacktree"
+    "github.com/rahul1534/gods-generic/flatten"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // RedBlackTreeExample to demonstrate basic usage of RedBlackTree
 func main() {
-    tree := rbt.NewWithIntComparator[string]() // empty(keys are of type int)
+    tree := flatten.NewRedBlackTree[int, string](utils.NumberComparator[int]) // empty(keys are of type int)
 
     tree.Put(1, "x") // 1->x
     tree.Put(2, "b") // 1->x, 2->b (in order)
@@ -692,12 +698,13 @@ package main
 import (
     "fmt"
 
-    avl "github.com/rahul1534/gods-generic/trees/avltree"
+    "github.com/rahul1534/gods-generic/flatten"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // AVLTreeExample to demonstrate basic usage of AVLTree
 func main() {
-    tree := avl.NewWithIntComparator[string]() // empty(keys are of type int)
+    tree := flatten.NewAvlTree[int, string](utils.NumberComparator[int]) // empty(keys are of type int)
 
     tree.Put(1, "x") // 1->x
     tree.Put(2, "b") // 1->x, 2->b (in order)
@@ -755,15 +762,18 @@ Implements [Tree](#trees), [ReverseIteratorWithKey](#reverseiteratorwithkey), [J
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/B-tree.svg/831px-B-tree.svg.png" width="400px" height="111px" /></p>
 
 ```go
+package main
+
 import (
     "fmt"
 
-    "github.com/rahul1534/gods-generic/trees/btree"
+    "github.com/rahul1534/gods-generic/flatten"
+    "github.com/rahul1534/gods-generic/utils"
 )
 
 // BTreeExample to demonstrate basic usage of BTree
 func main() {
-    tree := btree.NewWithIntComparator[string](3) // empty (keys are of type int)
+    tree := flatten.NewBtree[int, string](3, utils.NumberComparator[int]) // empty (keys are of type int)
 
     tree.Put(1, "x") // 1->x
     tree.Put(2, "b") // 1->x, 2->b (in order)
@@ -787,15 +797,14 @@ func main() {
     _ = tree.Values() // []interface {}{"a", "b", "c", "d", "e", "f", "g"} (in order)
     _ = tree.Keys()   // []interface {}{1, 2, 3, 4, 5, 6, 7} (in order)
 
-    tree.Remove(2) // 1->a, 3->c, 4->d, 5->e, 6->f, 7->g (in order)
+    tree.Remove(2) // 1->a, 3->c, 4->d, 5->e, 6->f (in order)
     fmt.Println(tree)
     // BTree
     //     1
     //     3
     // 4
     //     5
-    // 6
-    //     7
+    //     6
 
     tree.Clear() // empty
     tree.Empty() // true
@@ -809,7 +818,7 @@ func main() {
     tree.Right()      // get the right-most (max) node
     tree.RightKey()   // get the right-most (max) node's key
     tree.RightValue() // get the right-most (max) node's value
-}
+  }
 ```
 
 #### BinaryHeap
@@ -831,7 +840,7 @@ Implements [Tree](#trees), [ReverseIteratorWithIndex](#reverseiteratorwithindex)
 package main
 
 import (
-    "github.com/rahul1534/gods-generic/trees/binaryheap"
+    "github.com/rahul1534/gods-generic/flatten"
     "github.com/rahul1534/gods-generic/utils"
 )
 
@@ -839,30 +848,30 @@ import (
 func main() {
 
     // Min-heap
-    heap := binaryheap.NewWithIntComparator() // empty (min-heap)
-    heap.Push(2)                              // 2
-    heap.Push(3)                              // 2, 3
-    heap.Push(1)                              // 1, 3, 2
-    heap.Values()                             // 1, 3, 2
-    _, _ = heap.Peek()                        // 1,true
-    _, _ = heap.Pop()                         // 1, true
-    _, _ = heap.Pop()                         // 2, true
-    _, _ = heap.Pop()                         // 3, true
-    _, _ = heap.Pop()                         // nil, false (nothing to pop)
-    heap.Push(1)                              // 1
-    heap.Clear()                              // empty
-    heap.Empty()                              // true
-    heap.Size()                               // 0
+    heap := flatten.NewBinaryHeap(utils.NumberComparator[int]) // empty (min-heap)
+    heap.Push(2)                                               // 2
+    heap.Push(3)                                               // 2, 3
+    heap.Push(1)                                               // 1, 3, 2
+    heap.Values()                                              // 1, 3, 2
+    _, _ = heap.Peek()                                         // 1,true
+    _, _ = heap.Pop()                                          // 1, true
+    _, _ = heap.Pop()                                          // 2, true
+    _, _ = heap.Pop()                                          // 3, true
+    _, _ = heap.Pop()                                          // nil, false (nothing to pop)
+    heap.Push(1)                                               // 1
+    heap.Clear()                                               // empty
+    heap.Empty()                                               // true
+    heap.Size()                                                // 0
 
     // Max-heap
     inverseIntComparator := func(a, b int) int {
-        return -utils.NumberComparator(a, b)
+      return -utils.NumberComparator(a, b)
     }
-    heap = binaryheap.NewWith(inverseIntComparator) // empty (min-heap)
-    heap.Push(2)                                    // 2
-    heap.Push(3)                                    // 3, 2
-    heap.Push(1)                                    // 3, 2, 1
-    heap.Values()                                   // 3, 2, 1
+    heap = flatten.NewBinaryHeap(inverseIntComparator) // empty (min-heap)
+    heap.Push(2)                                       // 2
+    heap.Push(3)                                       // 3, 2
+    heap.Push(1)                                       // 3, 2, 1
+    heap.Values()                                      // 3, 2, 1
 }
 ```
 

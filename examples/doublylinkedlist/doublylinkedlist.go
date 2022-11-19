@@ -5,13 +5,13 @@
 package main
 
 import (
-	dll "github.com/rahul1534/gods-generic/lists/doublylinkedlist"
+	"github.com/rahul1534/gods-generic/flatten"
 	"github.com/rahul1534/gods-generic/utils"
 )
 
 // DoublyLinkedListExample to demonstrate basic usage of DoublyLinkedList
 func main() {
-	list := dll.New[string]()
+	list := flatten.NewDoublyLinkedList[string]()
 	list.Add("a")                         // ["a"]
 	list.Append("b")                      // ["a","b"] (same as Add())
 	list.Prepend("c")                     // ["c","a","b"]

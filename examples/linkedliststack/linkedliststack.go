@@ -4,11 +4,11 @@
 
 package main
 
-import lls "github.com/rahul1534/gods-generic/stacks/linkedliststack"
+import "github.com/rahul1534/gods-generic/flatten"
 
 // LinkedListStackExample to demonstrate basic usage of LinkedListStack
 func main() {
-	stack := lls.New[int]() // empty
+	stack := flatten.NewLinkedListStack[int]() // empty
 	stack.Push(1)           // 1
 	stack.Push(2)           // 1, 2
 	stack.Values()          // 2, 1 (LIFO order)
