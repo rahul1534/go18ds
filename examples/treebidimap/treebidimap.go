@@ -5,13 +5,13 @@
 package main
 
 import (
-	"github.com/rahul1534/gods-generic/maps/treebidimap"
+	"github.com/rahul1534/gods-generic/flatten"
 	"github.com/rahul1534/gods-generic/utils"
 )
 
 // TreeBidiMapExample to demonstrate basic usage of TreeBidiMap
 func main() {
-	m := treebidimap.NewWith(utils.NumberComparator[int], utils.StringComparator)
+	m := flatten.NewTreeBidiMap(utils.NumberComparator[int], utils.StringComparator)
 	m.Put(1, "x")        // 1->x
 	m.Put(3, "b")        // 1->x, 3->b (ordered)
 	m.Put(1, "a")        // 1->a, 3->b (ordered)
