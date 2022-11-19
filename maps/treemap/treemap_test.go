@@ -536,7 +536,7 @@ func TestMapSerialization(t *testing.T) {
 	}
 }
 
-//noinspection GoBoolExpressions
+// noinspection GoBoolExpressions
 func assertSerialization(m *Map[string, string], txt string, t *testing.T) {
 	if actualValue := m.Keys(); false ||
 		actualValue[0] != "a" ||

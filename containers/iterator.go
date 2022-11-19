@@ -60,7 +60,7 @@ type IteratorWithKey[K any, V any] interface {
 //
 // Essentially it is the same as IteratorWithIndex, but provides additional:
 //
-// Prev() function to enable traversal in reverse
+// # Prev() function to enable traversal in reverse
 //
 // Last() function to move the iterator to the last element.
 //
@@ -87,7 +87,7 @@ type ReverseIteratorWithIndex[T comparable] interface {
 //
 // Essentially it is the same as IteratorWithKey, but provides additional:
 //
-// Prev() function to enable traversal in reverse
+// # Prev() function to enable traversal in reverse
 //
 // Last() function to move the iterator to the last element.
 type ReverseIteratorWithKey[K comparable, V comparable] interface {
