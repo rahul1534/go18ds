@@ -14,6 +14,10 @@ import (
 	"github.com/rahul1534/gods-generic/sets/treeset"
 	"github.com/rahul1534/gods-generic/stacks/arraystack"
 	"github.com/rahul1534/gods-generic/stacks/linkedliststack"
+	"github.com/rahul1534/gods-generic/trees/avltree"
+	"github.com/rahul1534/gods-generic/trees/binaryheap"
+	"github.com/rahul1534/gods-generic/trees/btree"
+	"github.com/rahul1534/gods-generic/trees/redblacktree"
 	"github.com/rahul1534/gods-generic/utils"
 )
 
@@ -77,6 +81,25 @@ func NewArrayStack[T comparable]() *arraystack.Stack[T] {
 
 func NewLinkedListStack[T comparable]() *linkedliststack.Stack[T] {
 	return linkedliststack.New[T]()
+}
+
+// #endregion
+
+// #region Tree implementations
+func NewAvlTree[K comparable, V comparable](comparator utils.Comparator[K]) *avltree.Tree[K, V] {
+	return avltree.NewWith[K, V](comparator)
+}
+
+func NewBinaryHeap[T comparable](comparator utils.Comparator[T]) *binaryheap.Heap[T] {
+	return binaryheap.NewWith(comparator)
+}
+
+func NewBtree[K comparable, V comparable](order int, comparator utils.Comparator[K]) *btree.Tree[K, V] {
+	return btree.NewWith[K, V](order, comparator)
+}
+
+func NewRedBlackTree[K comparable, V comparable](comparator utils.Comparator[K]) *redblacktree.Tree[K, V] {
+	return redblacktree.NewWith[K, V](comparator)
 }
 
 // #endregion
