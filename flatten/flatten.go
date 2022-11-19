@@ -12,6 +12,8 @@ import (
 	"github.com/rahul1534/gods-generic/sets/hashset"
 	"github.com/rahul1534/gods-generic/sets/linkedhashset"
 	"github.com/rahul1534/gods-generic/sets/treeset"
+	"github.com/rahul1534/gods-generic/stacks/arraystack"
+	"github.com/rahul1534/gods-generic/stacks/linkedliststack"
 	"github.com/rahul1534/gods-generic/utils"
 )
 
@@ -53,6 +55,7 @@ func NewTreeBidiMap[K comparable, V comparable](keyComparator utils.Comparator[K
 
 // #endregion
 
+// #region Set implementations
 func NewHashSet[T comparable]() *hashset.Set[T] {
 	return hashset.New[T]()
 }
@@ -64,3 +67,16 @@ func NewLinkedHashSet[T comparable]() *linkedhashset.Set[T] {
 func NewTreeSet[T comparable](comparator utils.Comparator[T]) *treeset.Set[T] {
 	return treeset.NewWith(comparator)
 }
+
+// #endregion
+
+// #region Stack implementations
+func NewArrayStack[T comparable]() *arraystack.Stack[T] {
+	return arraystack.New[T]()
+}
+
+func NewLinkedListStack[T comparable]() *linkedliststack.Stack[T] {
+	return linkedliststack.New[T]()
+}
+
+// #endregion
