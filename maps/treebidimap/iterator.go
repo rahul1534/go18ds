@@ -75,3 +75,31 @@ func (iterator *Iterator[K, V]) First() bool {
 func (iterator *Iterator[K, V]) Last() bool {
 	return iterator.iterator.Last()
 }
+
+// NextTo moves the iterator to the next element from current position that satisfies the condition given by the
+// passed function, and returns true if there was a next element in the container.
+// If NextTo() returns true, then next element's key and value can be retrieved by Key() and Value().
+// Modifies the state of the iterator.
+func (iterator *Iterator[K, V]) NextTo(f func(key K, value V) bool) bool {
+	for iterator.Next() {
+		key, value := iterator.Key(), iterator.Value()
+		if f(key, value) {
+			return true
+		}
+	}
+	return false
+}
+
+// PrevTo moves the iterator to the previous element from current position that satisfies the condition given by the
+// passed function, and returns true if there was a next element in the container.
+// If PrevTo() returns true, then next element's key and value can be retrieved by Key() and Value().
+// Modifies the state of the iterator.
+func (iterator *Iterator[K, V]) PrevTo(f func(key K, value V) bool) bool {
+	for iterator.Prev() {
+		key, value := iterator.Key(), iterator.Value()
+		if f(key, value) {
+			return true
+		}
+	}
+	return false
+}
