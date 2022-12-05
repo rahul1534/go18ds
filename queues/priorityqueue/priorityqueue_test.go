@@ -460,7 +460,9 @@ func TestBinaryQueueSerialization(t *testing.T) {
 		t.Errorf("Got error %v", err)
 	}
 
-	err = json.Unmarshal([]byte(`[1,2,3]`), &queue)
+	intQueue := NewWith(utils.NumberComparator[int])
+
+	err = json.Unmarshal([]byte(`[1,2,3]`), &intQueue)
 	if err != nil {
 		t.Errorf("Got error %v", err)
 	}
