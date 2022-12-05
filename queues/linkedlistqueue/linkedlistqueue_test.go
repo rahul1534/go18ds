@@ -158,8 +158,8 @@ func TestQueueIteratorFirst(t *testing.T) {
 
 func TestQueueIteratorNextTo(t *testing.T) {
 	// Sample seek function, i.e. string starting with "b"
-	seek := func(index int, value interface{}) bool {
-		return strings.HasSuffix(value.(string), "b")
+	seek := func(index int, value string) bool {
+		return strings.HasSuffix(value, "b")
 	}
 
 	// NextTo (empty)

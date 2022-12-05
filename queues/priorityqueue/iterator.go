@@ -2,25 +2,24 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package linkedhashset
+package priorityqueue
 
 import (
 	"github.com/rahul1534/gods-generic/containers"
-	"github.com/rahul1534/gods-generic/lists/doublylinkedlist"
+	"github.com/rahul1534/gods-generic/trees/binaryheap"
 )
 
-func assertIteratorImplementation() {
-	var _ containers.ReverseIteratorWithIndex[string] = (*Iterator[string])(nil)
-}
+// Assert Iterator implementation
+var _ containers.ReverseIteratorWithIndex[string] = (*Iterator[string])(nil)
 
-// Iterator holding the iterator's state
+// Iterator returns a stateful iterator whose values can be fetched by an index.
 type Iterator[T comparable] struct {
-	iterator doublylinkedlist.Iterator[T]
+	iterator binaryheap.Iterator[T]
 }
 
 // Iterator returns a stateful iterator whose values can be fetched by an index.
-func (set *Set[T]) Iterator() Iterator[T] {
-	return Iterator[T]{iterator: set.ordering.Iterator()}
+func (queue *Queue[T]) Iterator() Iterator[T] {
+	return Iterator[T]{iterator: queue.heap.Iterator()}
 }
 
 // Next moves the iterator to the next element and returns true if there was a next element in the container.
@@ -81,13 +80,7 @@ func (iterator *Iterator[T]) Last() bool {
 // If NextTo() returns true, then next element's index and value can be retrieved by Index() and Value().
 // Modifies the state of the iterator.
 func (iterator *Iterator[T]) NextTo(f func(index int, value T) bool) bool {
-	for iterator.Next() {
-		index, value := iterator.Index(), iterator.Value()
-		if f(index, value) {
-			return true
-		}
-	}
-	return false
+	return iterator.iterator.NextTo(f)
 }
 
 // PrevTo moves the iterator to the previous element from current position that satisfies the condition given by the
@@ -95,11 +88,5 @@ func (iterator *Iterator[T]) NextTo(f func(index int, value T) bool) bool {
 // If PrevTo() returns true, then next element's index and value can be retrieved by Index() and Value().
 // Modifies the state of the iterator.
 func (iterator *Iterator[T]) PrevTo(f func(index int, value T) bool) bool {
-	for iterator.Prev() {
-		index, value := iterator.Index(), iterator.Value()
-		if f(index, value) {
-			return true
-		}
-	}
-	return false
+	return iterator.iterator.PrevTo(f)
 }

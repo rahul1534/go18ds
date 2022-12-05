@@ -20,9 +20,8 @@ import (
 	"github.com/rahul1534/gods-generic/utils"
 )
 
-func assertTreeImplementation() {
-	var _ trees.Tree[int] = (*Heap[int])(nil)
-}
+// Assert Tree implementation
+var _ trees.Tree[int] = (*Heap[int])(nil)
 
 // Heap holds elements in an array-list
 type Heap[T comparable] struct {
@@ -99,15 +98,19 @@ func (heap *Heap[T]) Clear() {
 
 // Values returns all elements in the heap.
 func (heap *Heap[T]) Values() []T {
-	return heap.list.Values()
+	values := make([]T, heap.list.Size())
+	for it := heap.Iterator(); it.Next(); {
+		values[it.Index()] = it.Value()
+	}
+	return values
 }
 
 // String returns a string representation of container
 func (heap *Heap[T]) String() string {
 	str := "BinaryHeap\n"
 	values := []string{}
-	for _, value := range heap.list.Values() {
-		values = append(values, fmt.Sprintf("%v", value))
+	for it := heap.Iterator(); it.Next(); {
+		values = append(values, fmt.Sprintf("%v", it.Value()))
 	}
 	str += strings.Join(values, ", ")
 	return str

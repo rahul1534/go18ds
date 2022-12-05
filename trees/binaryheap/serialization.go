@@ -4,12 +4,13 @@
 
 package binaryheap
 
-import "github.com/rahul1534/gods-generic/containers"
+import (
+	"github.com/rahul1534/gods-generic/containers"
+)
 
-func assertSerializationImplementation() {
-	var _ containers.JSONSerializer = (*Heap[int])(nil)
-	var _ containers.JSONDeserializer = (*Heap[int])(nil)
-}
+// Assert Serialization implementation
+var _ containers.JSONSerializer = (*Heap[string])(nil)
+var _ containers.JSONDeserializer = (*Heap[string])(nil)
 
 // ToJSON outputs the JSON representation of the heap.
 func (heap *Heap[T]) ToJSON() ([]byte, error) {
@@ -19,4 +20,14 @@ func (heap *Heap[T]) ToJSON() ([]byte, error) {
 // FromJSON populates the heap from the input JSON representation.
 func (heap *Heap[T]) FromJSON(data []byte) error {
 	return heap.list.FromJSON(data)
+}
+
+// UnmarshalJSON @implements json.Unmarshaler
+func (heap *Heap[T]) UnmarshalJSON(bytes []byte) error {
+	return heap.FromJSON(bytes)
+}
+
+// MarshalJSON @implements json.Marshaler
+func (heap *Heap[T]) MarshalJSON() ([]byte, error) {
+	return heap.ToJSON()
 }

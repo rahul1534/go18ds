@@ -58,3 +58,17 @@ func (iterator *Iterator[T]) First() bool {
 	iterator.Begin()
 	return iterator.Next()
 }
+
+// NextTo moves the iterator to the next element from current position that satisfies the condition given by the
+// passed function, and returns true if there was a next element in the container.
+// If NextTo() returns true, then next element's index and value can be retrieved by Index() and Value().
+// Modifies the state of the iterator.
+func (iterator *Iterator[T]) NextTo(f func(index int, value T) bool) bool {
+	for iterator.Next() {
+		index, value := iterator.Index(), iterator.Value()
+		if f(index, value) {
+			return true
+		}
+	}
+	return false
+}
